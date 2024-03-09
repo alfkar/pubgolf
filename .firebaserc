@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pub-b986b": {
+      "hosting": {
+        "pubgolf": [
+          "pub-b986b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pub-b986b"
+  }
+}
