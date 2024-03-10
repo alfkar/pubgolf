@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 const routes: Routes = [
-  { path: '', component: AppComponent }, // Front page route
   { path: 'login', component: LoginPageComponent }, // Sign-in page route
 ];
 @NgModule({
