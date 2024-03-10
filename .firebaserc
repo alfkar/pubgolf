@@ -6,9 +6,16 @@
           "pub-b986b"
         ]
       }
+    },
+    "pubgolf-302c7": {
+      "hosting": {
+        "pubgolf": [
+          "pubgolf-302c7"
+        ]
+      }
     }
   },
   "projects": {
-    "default": "pub-b986b"
+    "default": "pubgolf-302c7"
   }
 }

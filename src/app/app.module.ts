@@ -11,15 +11,15 @@ import { LoginPageComponent } from './login-page/login-page.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    provideFirebaseApp(() => initializeApp({"projectId":"pub-b986b","appId":"1:1088919625151:web:453afca4dffa642074550a","storageBucket":"pub-b986b.appspot.com","apiKey":"AIzaSyDIaX8ZUccm7BDdI-RZ2nXdOfRl25vbAnI","authDomain":"pub-b986b.firebaseapp.com","messagingSenderId":"1088919625151","measurementId":"G-M2XVERNJQP"})),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideDatabase(() => getDatabase())
+    provideDatabase(() => getDatabase()),
+    provideFirebaseApp(() => initializeApp({"projectId":"pubgolf-302c7","appId":"1:533018434791:web:4a0db349dffeb4c7de5642","storageBucket":"pubgolf-302c7.appspot.com","apiKey":"AIzaSyC9M-AQzwYgMgCFKOMy6DF2ns6uHU2_A80","authDomain":"pubgolf-302c7.firebaseapp.com","messagingSenderId":"533018434791","measurementId":"G-8X3JYCS1ZY"}))
   ],
   providers: [],
   bootstrap: [AppComponent]
