@@ -1,0 +1,7 @@
+<nav class="navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#">Your Logo</a>
+        <div class="user-info" *ngIf="isLoggedIn && loggedInUser">{{ loggedInUser.name }}</div>
+        <button (click)="signOut()">Sign Out</button>
+    </div>
+</nav>

@@ -1,0 +1,15 @@
+.container {
+    max-width: 1200px; /* Adjust the max-width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 0 20px; /* Add padding to the sides */
+  }
+  .navbar-brand {
+    font-size: 1.5rem; /* Set the font size of the navbar brand */
+    text-decoration: none; /* Remove the default underline */
+  }
+  
+  .user-info {
+    margin-left: auto; /* Move the user info to the right */
+    font-size: 1rem; /* Set the font size of the user info */
+  }
+  

@@ -9,6 +9,6 @@ export class AppComponent {
   title = 'pubgolf';
   constructor(private router: Router) { }
   onSignInClick() {
-    this.router.navigate(['/login']); // Navigate to sign-in page
+    this.router.navigate(['']); // Navigate to sign-in page
   }
 }
