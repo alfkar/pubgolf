@@ -1,15 +1,47 @@
-.container {
-    max-width: 1200px; /* Adjust the max-width as needed */
-    margin: 0 auto; /* Center the container horizontally */
-    padding: 0 20px; /* Add padding to the sides */
-  }
-  .navbar-brand {
-    font-size: 1.5rem; /* Set the font size of the navbar brand */
-    text-decoration: none; /* Remove the default underline */
-  }
-  
-  .user-info {
-    margin-left: auto; /* Move the user info to the right */
-    font-size: 1rem; /* Set the font size of the user info */
-  }
-  
+.navbar {
+  background-color: #abb596; /* Set the background color of the navbar */
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Vertically center items */
+  justify-content: space-between; /* Distribute items evenly */
+  padding: 10px 20px; /* Add padding to the navbar */
+}
+
+.navbar-brand {
+  font-size: 1.5rem; /* Set the font size of the navbar brand */
+  text-decoration: none; /* Remove the default underline */
+}
+
+.navbar-brand img {
+  width: 70px; /* Set the width of the logo */
+  height: 70px; /* Set the height of the logo */
+  border-radius: 50%; /* Make the logo circular */
+}
+
+.user-info {
+  font-size: 1.5rem; /* Set the font size of the user info */
+  text-transform: uppercase; /* Convert user info text to uppercase */
+  font-family: 'Open Sans';
+  background-color: ;
+}
+
+.logout {
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.logout img {
+  width: 30px; /* Set the width of the logout button */
+  height: 30px; /* Set the height of the logout button */
+  margin-left: 20px; /* Add space between the user info and the logout button */
+  margin-right: 20px;
+}
+
+.pub-golf {
+  flex-grow: 1; /* Allow the "PUB GOLF" text to grow and occupy remaining space */
+  text-align: center; /* Center the text horizontally */
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
+  font-size: 2.5rem;
+  margin-top: 10px;
+  font-family: 'Old English Five', sans-serif;
+}

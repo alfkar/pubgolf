@@ -21,10 +21,13 @@
   text-align: center;
   font-family: 'Old English Five', sans-serif;
   z-index: 1; /* Ensure content is on top of the line */
-  font-size: 3em;
   user-select: none; /* Prevent text selection */
+  color: black;
 }
-
+.content h1 {
+  font-size: 5rem;
+  margin-bottom: 0;
+}
 .sidebar {
   width: 20%; /* Set the width of the sidebar */
   display: flex;
@@ -40,5 +43,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Ensure the login component takes the full height of its container */
+  height: 100%; /* Ensure the login component takes the full height of its container */;
 }
