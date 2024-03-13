@@ -3,16 +3,17 @@
 }
 .background {
   background-image: url('../../assets/pub-golf.svg');
-  background-size: 55%; /* Adjust as needed */
+  background-size: 62 %; /* Adjust as needed */
   background-repeat: no-repeat;
   background-position: center;
-  background-color: antiquewhite;
+  background-color: #faebd7;
   height: 100vh;
-  width: 90%;
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
+  left: 0;
   position: fixed; /* Needed for absolute positioning */
 }
 
@@ -23,14 +24,16 @@
   font-size: 3em;
 }
 
-
 .sidebar {
+  width: 20%; /* Set the width of the sidebar */
   display: flex;
-  background-color: #f0f0f0; /* Sidebar background color */
+  background-color: #abb596; /* Sidebar background color */
   height: 100vh;
   position: fixed; /* Fixed position to keep sidebar always visible */
   right: 0; /* Position the sidebar on the left side of the page */
   top: 0; /* Align sidebar to the top of the page */
+  justify-content: center;
+  border-left: black 3px groove; /* Add a border to the left of the sidebar */
 }
 .login {
   display: flex;
