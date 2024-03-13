@@ -1,0 +1,27 @@
+.signin-buttons {
+    padding: 20px; /* Add padding to the buttons */
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center;
+  }
+  
+  .github-button,
+  .google-button {
+    padding: 10px 20px; /* Adjust padding */
+    margin-bottom: 10px; /* Add space between buttons */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .github-button {
+    background-color: #333; /* GitHub button color */
+    color: #fff;
+  }
+  
+  .google-button {
+    background-color: #dd4b39; /* Google button color */
+    color: #fff;
+  }
+  

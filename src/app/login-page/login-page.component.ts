@@ -7,7 +7,8 @@ import { Firestore, collection, setDoc, doc, getDoc} from '@angular/fire/firesto
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.css']
+  styleUrls: ['./login-page.component.css'],
+  standalone: true
 })
 export class LoginPageComponent {
   private auth: Auth = inject(Auth);
@@ -26,7 +27,7 @@ export class LoginPageComponent {
       const credential = await signInWithPopup(this.auth, new GithubAuthProvider());
       const user = credential.user;
       console.log(user)
-      // this.createOrGet(user);
+      this.addUser(user);
       this.isLoggedIn = true; // Update login state
       this.navigateToProtectedArea(); // Optional: Navigate to a protected area
     } catch (error) {
@@ -61,35 +62,37 @@ export class LoginPageComponent {
   }
 
 
-private async addUserToFirestore(user: UserInfo): Promise<User> {
-  const userRef = doc(collection(this.firestore, "infos"), user.uid);
-  try {
-    const docSnap = await getDoc(userRef);
-    if (docSnap.exists()) {
-      const existingData = docSnap.data();
-      console.warn('User already exists in Firestore:', user.uid);
-      // User exists, return existing data with defaults for missing fields
-      return {
-        uid: user.uid,
-        email: existingData['email'],
-        name: existingData['name']
-      };
-    } else {
-      // Document doesn't exist, proceed with setDoc
-      await setDoc(userRef, {
-        uid: user.uid,
-        email: user.email,
-        name: user.displayName, // Add name from UserInfo
-        // Add more user data as needed
-      });
-      console.log('User added to Firestore successfully');
-      return { uid: user.uid, email: user.email || '', name: user.displayName || '' };
+  private async addUser(user: UserInfo): Promise<User> {
+    const userRef = doc(collection(this.firestore, "users"), user.uid);
+    try {
+      const docSnap = await getDoc(userRef);
+      if (docSnap.exists()) {
+        const existingData = docSnap.data();
+        console.warn('User already exists in Firestore:', user.uid);
+        // User exists, return existing data with defaults for missing fields
+        return {
+          uid: user.uid,
+          email: existingData['email'],
+          name: existingData['name']
+        };
+      } else {
+        // Document doesn't exist, proceed with setDoc
+        await setDoc(userRef, {
+          uid: user.uid,
+          email: user.email,
+          name: user.displayName, // Add name from UserInfo
+          // Add more user data as needed
+        });
+        console.log('User added to Firestore successfully');
+        return { uid: user.uid, email: user.email || '', name: user.displayName || '' };
+      }
+    } catch (error) {
+      console.error('Firestore Error:', error);
+      // Handle errors (consider throwing or returning a specific error object)
+      return Promise.reject(error); // Return a rejected promise with the error
     }
-  } catch (error) {
-    console.error('Firestore Error:', error);
-    // Handle errors (consider throwing or returning a specific error object)
-  }
-}  private navigateToProtectedArea() {
+  }  
+private navigateToProtectedArea() {
     // Implement logic to navigate to a protected area of your application
     // based on your routing configuration (e.g., this.router.navigate(['/protected']))
   }
