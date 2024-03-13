@@ -1,0 +1,12 @@
+<nav class="navbar">
+    <a class="navbar-brand" href="#">
+        <img src="../../assets/logo.png" alt="Pubgolf Logo">
+    </a>
+    <p class="pub-golf">
+    PUB GOLF
+    </p>
+    <div class="user-info" *ngIf="isLoggedIn && userName">{{ userName }}</div>
+    <a class="logout" (click)="signOut()">
+        <img src="../../assets/logout.png" alt="logout">
+    </a>
+</nav>

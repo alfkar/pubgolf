@@ -2,17 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { User } from '../user.service';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls: ['./homepage.component.css'],
+  standalone: true,
+  imports: [NavbarComponent]
 })
 export class HomepageComponent {
   isLoggedIn: boolean = false;
   loggedInUser: User | undefined;
-  constructor(private userService: UserService, private router: Router) {
-  }
+
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     // Subscribe to isLoggedIn changes
@@ -27,7 +30,5 @@ export class HomepageComponent {
 
     });
   }
-  signOut() {
-    this.userService.logout();
-  }
+
 }

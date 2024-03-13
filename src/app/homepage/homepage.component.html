@@ -1,12 +1,1 @@
-<nav class="navbar">
-    <a class="navbar-brand" href="#">
-        <img src="../../assets/logo.png" alt="Pubgolf Logo">
-    </a>
-    <p class="pub-golf">
-    PUB GOLF
-    </p>
-    <div class="user-info" *ngIf="isLoggedIn && loggedInUser">{{ loggedInUser.name }}</div>
-    <a class="logout" (click)="signOut()">
-        <img src="../../assets/logout.png" alt="logout">
-    </a>
-</nav>
+<app-navbar [userName]="loggedInUser?.name ?? ''" [isLoggedIn]="isLoggedIn"></app-navbar>
