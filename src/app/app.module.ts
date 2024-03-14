@@ -7,15 +7,11 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { HomepageComponent } from './homepage/homepage.component';
-import { GameComponent } from './game/game.component';
-import { HoleComponent } from './hole/hole.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    GameComponent,
-    HoleComponent,
   ],
   imports: [
     BrowserModule,

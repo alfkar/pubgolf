@@ -21,7 +21,7 @@
   font-size: 1.5rem; /* Set the font size of the user info */
   text-transform: uppercase; /* Convert user info text to uppercase */
   font-family: 'Open Sans';
-  background-color: ;
+  background-color: #faebd7;
 }
 
 .logout {

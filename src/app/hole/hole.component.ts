@@ -1,25 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-hole',
   templateUrl: './hole.component.html',
-  styleUrls: ['./hole.component.css']
+  styleUrls: ['./hole.component.css'],
+  imports: [CommonModule],
+  standalone: true
 })
 export class HoleComponent {
-  par: number = 1;
-  players: { name: string, score: number }[] = [];
+  @Input() par: number = 0;
+  @Input() holeNumber: number = 0;
+  @Input() players: { name: string, scores: number[] }[] = [];
+  @Input() holeIndex: number = 0;
 
   constructor() { }
-  ngOnInit(){
-    this.addPlayer('John', 1);
-    this.addPlayer('Jane', 2);
-    this.addPlayer('Jack', 3);
-  }
-  addPlayer(playerName: string, playerScore: number) {
-    this.players.push({ name: playerName, score: playerScore });
+
+  getPlayerScore(playerIndex: number): number {
+    return this.players[playerIndex].scores[this.holeIndex];
   }
 
-  getPlayerScoreDifference(playerScore: number): number {
-    return playerScore - this.par;
+  incrementScore(playerIndex: number) {
+    this.players[playerIndex].scores[this.holeIndex]++;
+  }
+
+  decrementScore(playerIndex: number) {
+    if (this.players[playerIndex].scores[this.holeIndex] > 0) {
+      this.players[playerIndex].scores[this.holeIndex]--;
+    }
   }
 }
