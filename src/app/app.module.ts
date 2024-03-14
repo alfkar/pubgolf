@@ -6,14 +6,10 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
-import { GameComponent } from './game/game.component';
-import { HoleComponent } from './hole/hole.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GameComponent,
-    HoleComponent,
   ],
   imports: [
     BrowserModule,
