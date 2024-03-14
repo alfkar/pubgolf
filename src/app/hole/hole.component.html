@@ -1,0 +1,10 @@
+<div>
+    <h2>Par: {{ par }}</h2>
+    <div *ngFor="let player of players">
+      <p>{{ player.name }}'s score: {{ player.score }} ({{ getPlayerScoreDifference(player.score) > 0 ? '+' : ''}}{{ getPlayerScoreDifference(player.score) }})</p>
+    </div>
+    <button>
+    Add Player
+    </button>
+</div>
+  
