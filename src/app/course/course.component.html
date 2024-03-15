@@ -1,18 +1,24 @@
-<!-- course.component.html -->
-
 <p>course works!</p>
-<div *ngFor="let hole of holes; let i = index">
-  <app-hole [par]="hole.par" [holeNumber]="hole.holeNumber" [players]="players" [holeIndex]="i">
+<div>
+<div class="hole-list">
+  <ul>
+    <li *ngFor="let hole of holes; let i = index">
+      <a (click)="selectHole(i)">Hole {{ i + 1 }}</a>
+    </li>
+  </ul>
+</div>
+
+<div class="hole-details">
+  <app-hole *ngIf="selectedHoleIndex !== null" [par]="holes[selectedHoleIndex].par" [holeNumber]="holes[selectedHoleIndex].holeNumber" [players]="players" [holeIndex]="selectedHoleIndex">
   </app-hole>
 </div>
 
-<!-- Add form to input player names and add them -->
 <form (ngSubmit)="addPlayer(playerName.value); playerName.value='';">
   <input #playerName type="text" placeholder="Enter player name">
   <button type="submit">Add Player</button>
 </form>
 
-<!-- Display players' total scores -->
 <div *ngFor="let player of players; let i = index">
   <p>{{ player.name }}'s Total Score: {{ getTotalScoreForPlayer(i) }}</p>
+</div>
 </div>
