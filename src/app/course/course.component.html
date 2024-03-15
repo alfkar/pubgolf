@@ -6,6 +6,7 @@
       <li *ngFor="let hole of holes; let i = index">
         <a (click)="selectHole(i)">Hole {{ i + 1 }}</a>
       </li>
+      <a (click)="toggleHoleForm()">Add Hole</a>
     </ul>
   </div>
 
@@ -22,13 +23,13 @@
   <div *ngFor="let player of players; let i = index">
     <p>{{ player.name }}'s Total Score: {{ getTotalScoreForPlayer(i) }}</p>
   </div>
-
-    <form (ngSubmit)="addHole(+holeNumber.value, +par.value, location.value, +latitude.value, +longitude.value)">
-      <input #holeNumber type="number" placeholder="Enter hole number" required>
+  <div *ngIf="showHoleForm">
+    <form (ngSubmit)="addHole(+par.value, location.value, +latitude.value, +longitude.value)">
       <input #par type="number" placeholder="Enter par" required>
       <input #location type="text" placeholder="Enter location">
       <input #latitude type="number" placeholder="Enter latitude">
       <input #longitude type="number" placeholder="Enter longitude">
       <button type="submit">Add Hole</button>
-    </form>  
+    </form>
+  </div>  
 </div>

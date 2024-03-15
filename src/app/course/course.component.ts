@@ -4,19 +4,21 @@ import { CommonModule } from '@angular/common';
 import { User, UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
   styleUrls: ['./course.component.css'],
-  imports: [HoleComponent, CommonModule, NavbarComponent],
+  imports: [HoleComponent, CommonModule, NavbarComponent, FormsModule],
   standalone: true
 })
 export class CourseComponent {
+  formId = "something";
   isLoggedIn: boolean = false;
   loggedInUser: User | undefined;
   holes: Hole[] = [];
-
+  showHoleForm: boolean = false;
   players: Player[] = [];
   selectedHoleIndex: number | null = null;
 
@@ -36,11 +38,13 @@ export class CourseComponent {
   addPlayer(playerName: string) {
     this.players.push({ id: '', name: playerName, scores: new Array(this.holes.length).fill(0) });
   }
-
-  addHole(holeNumber: number, par: number, location?: string, latitude?: number, longitude?: number) {
+  toggleHoleForm(){
+    this.showHoleForm = !this.showHoleForm;
+  }
+  addHole(par: number, location?: string, latitude?: number, longitude?: number) {
     console.log('holes', this.holes);
     const newHole: Hole = {
-      holeNumber: holeNumber,
+      holeNumber: this.holes.length + 1,
       par: par,
       location: location,
       geolocation: latitude && longitude ? { lat: latitude, long: longitude } : undefined,
