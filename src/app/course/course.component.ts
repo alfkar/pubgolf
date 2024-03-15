@@ -1,33 +1,62 @@
 import { Component } from '@angular/core';
 import { HoleComponent } from '../hole/hole.component';
 import { CommonModule } from '@angular/common';
+import { User, UserService } from '../user.service';
+import { Router } from '@angular/router';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
   styleUrls: ['./course.component.css'],
-  imports: [HoleComponent, CommonModule],
+  imports: [HoleComponent, CommonModule, NavbarComponent],
   standalone: true
 })
 export class CourseComponent {
-  holes = [
-    { holeNumber: 1, par: 4 },
-    { holeNumber: 2, par: 3 },
-    { holeNumber: 3, par: 5 },
-    // Add more holes as needed
-  ];
+  isLoggedIn: boolean = false;
+  loggedInUser: User | undefined;
+  holes: Hole[] = [];
 
-  players: { name: string, scores: number[] }[] = [];
+  players: Player[] = [];
   selectedHoleIndex: number | null = null;
 
-  constructor() { }
+  constructor(private userService: UserService, private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    // Subscribe to isLoggedIn changes
+    this.userService.isLoggedIn$.subscribe((isLoggedIn: boolean) => {
+      this.isLoggedIn = isLoggedIn;
+    });
+    // Subscribe to loggedInUser changes
+    this.userService.loggedInUser$.subscribe((loggedInUser: User | undefined) => {
+      this.loggedInUser = loggedInUser;
+    });
   }
 
   addPlayer(playerName: string) {
-    this.players.push({ name: playerName, scores: new Array(this.holes.length).fill(0) });
+    this.players.push({ id: '', name: playerName, scores: new Array(this.holes.length).fill(0) });
   }
+
+  addHole(holeNumber: number, par: number, location?: string, latitude?: number, longitude?: number) {
+    console.log('holes', this.holes);
+    const newHole: Hole = {
+      holeNumber: holeNumber,
+      par: par,
+      location: location,
+      geolocation: latitude && longitude ? { lat: latitude, long: longitude } : undefined,
+      playerScores: new Map<string, number>()
+    };
+  
+    this.players.forEach(player => {
+      player.scores.push(0);
+      newHole.playerScores.set(player.id, 0);
+    });
+  
+    this.holes.push(newHole);
+  }
+  logButtonClick() {
+    console.log('Button clicked');
+  }  
 
   updatePlayerScore(playerIndex: number, score: number, holeIndex: number) {
     this.players[playerIndex].scores[holeIndex] = score;
@@ -41,3 +70,19 @@ export class CourseComponent {
     this.selectedHoleIndex = holeIndex;
   }
 }
+
+
+export interface Hole {
+    holeNumber: number;
+    par: number;
+    location?: string;
+    geolocation?: { lat: number, long: number };
+    name?: string;
+    playerScores: Map<string, number>;
+}
+export interface Player{
+  id: string,
+  name: string,
+  scores: number[]
+}
+  

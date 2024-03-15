@@ -1,24 +1,34 @@
+<app-navbar [userName]="loggedInUser?.name ?? ''" [isLoggedIn]="isLoggedIn"></app-navbar>
 <p>course works!</p>
 <div>
-<div class="hole-list">
-  <ul>
-    <li *ngFor="let hole of holes; let i = index">
-      <a (click)="selectHole(i)">Hole {{ i + 1 }}</a>
-    </li>
-  </ul>
-</div>
+  <div class="hole-list">
+    <ul>
+      <li *ngFor="let hole of holes; let i = index">
+        <a (click)="selectHole(i)">Hole {{ i + 1 }}</a>
+      </li>
+    </ul>
+  </div>
 
-<div class="hole-details">
-  <app-hole *ngIf="selectedHoleIndex !== null" [par]="holes[selectedHoleIndex].par" [holeNumber]="holes[selectedHoleIndex].holeNumber" [players]="players" [holeIndex]="selectedHoleIndex">
-  </app-hole>
-</div>
+  <div class="hole-details">
+    <app-hole *ngIf="selectedHoleIndex !== null" [par]="holes[selectedHoleIndex].par" [holeNumber]="holes[selectedHoleIndex].holeNumber" [players]="players" [holeIndex]="selectedHoleIndex">
+    </app-hole>
+  </div>
 
-<form (ngSubmit)="addPlayer(playerName.value); playerName.value='';">
-  <input #playerName type="text" placeholder="Enter player name">
-  <button type="submit">Add Player</button>
-</form>
+  <form (ngSubmit)="addPlayer(playerName.value); playerName.value='';">
+    <input #playerName type="text" placeholder="Enter player name">
+    <button type="submit">Add Player</button>
+  </form>
 
-<div *ngFor="let player of players; let i = index">
-  <p>{{ player.name }}'s Total Score: {{ getTotalScoreForPlayer(i) }}</p>
-</div>
+  <div *ngFor="let player of players; let i = index">
+    <p>{{ player.name }}'s Total Score: {{ getTotalScoreForPlayer(i) }}</p>
+  </div>
+
+    <form (ngSubmit)="addHole(+holeNumber.value, +par.value, location.value, +latitude.value, +longitude.value)">
+      <input #holeNumber type="number" placeholder="Enter hole number" required>
+      <input #par type="number" placeholder="Enter par" required>
+      <input #location type="text" placeholder="Enter location">
+      <input #latitude type="number" placeholder="Enter latitude">
+      <input #longitude type="number" placeholder="Enter longitude">
+      <button type="submit">Add Hole</button>
+    </form>  
 </div>

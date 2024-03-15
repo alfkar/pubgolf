@@ -3,7 +3,8 @@
   display: flex; /* Use flexbox layout */
   align-items: center; /* Vertically center items */
   justify-content: space-between; /* Distribute items evenly */
-  padding: 10px 20px; /* Add padding to the navbar */
+   /* Add padding to the navbar */
+  justify-content: center;
 }
 
 .navbar-brand {
@@ -15,6 +16,7 @@
   width: 70px; /* Set the width of the logo */
   height: 70px; /* Set the height of the logo */
   border-radius: 50%; /* Make the logo circular */
+  margin-left: 20px;
 }
 
 .user-info {
