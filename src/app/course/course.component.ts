@@ -21,7 +21,7 @@ export class CourseComponent {
   showHoleForm: boolean = false;
   showAddPlayerForm: boolean = false;
   players: Player[] = [];
-  selectedHoleIndex: number | null = 0;
+  selectedHoleIndex: number | null = null;
 
   constructor(private userService: UserService, private router: Router) {}
 
