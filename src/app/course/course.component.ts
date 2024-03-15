@@ -19,8 +19,9 @@ export class CourseComponent {
   loggedInUser: User | undefined;
   holes: Hole[] = [];
   showHoleForm: boolean = false;
+  showAddPlayerForm: boolean = false;
   players: Player[] = [];
-  selectedHoleIndex: number | null = null;
+  selectedHoleIndex: number | null = 0;
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -41,6 +42,9 @@ export class CourseComponent {
   toggleHoleForm(){
     this.showHoleForm = !this.showHoleForm;
   }
+  toggleAddPlayerForm(){
+    this.showAddPlayerForm = !this.showAddPlayerForm;
+  }
   addHole(par: number, location?: string, latitude?: number, longitude?: number) {
     console.log('holes', this.holes);
     const newHole: Hole = {
@@ -57,6 +61,7 @@ export class CourseComponent {
     });
   
     this.holes.push(newHole);
+    this.toggleHoleForm();
   }
   logButtonClick() {
     console.log('Button clicked');

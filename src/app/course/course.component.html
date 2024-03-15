@@ -1,13 +1,35 @@
 <app-navbar [userName]="loggedInUser?.name ?? ''" [isLoggedIn]="isLoggedIn"></app-navbar>
-<p>course works!</p>
-<div>
-  <div class="hole-list">
+<div class="container">
+  <div class="hole-list"> Holes
     <ul>
       <li *ngFor="let hole of holes; let i = index">
         <a (click)="selectHole(i)">Hole {{ i + 1 }}</a>
       </li>
-      <a (click)="toggleHoleForm()">Add Hole</a>
+      <a class="add-icon" (click)="toggleHoleForm()">
+        <img src="../../assets/add.png" alt="Add Hole">
+      </a>
     </ul>
+    <div class="add-hole-form" *ngIf="showHoleForm">
+      <form (ngSubmit)="addHole(+par.value, location.value, +latitude.value, +longitude.value)">
+        <input #par type="number" placeholder="Enter par" required>
+        <input #location type="text" placeholder="Enter location">
+        <input #latitude type="number" placeholder="Enter latitude">
+        <input #longitude type="number" placeholder="Enter longitude">
+        <button type="submit">Add Hole</button>
+      </form>
+    </div>
+  </div>
+  <div class="player-scores"> Players
+    <div *ngFor="let player of players; let i = index">
+      <p>{{ player.name }}'s Total Score: {{ getTotalScoreForPlayer(i) }}</p>
+    </div>
+    <a class="add-icon" (click)="toggleAddPlayerForm()">
+      <img src="../../assets/add.png" alt="Add Hole">
+    </a>
+    <form *ngIf="showAddPlayerForm" class="add-player-form" (ngSubmit)="addPlayer(playerName.value); playerName.value='';">
+      <input #playerName type="text" placeholder="Enter player name">
+      <button type="submit">Add Player</button>
+    </form>
   </div>
 
   <div class="hole-details">
@@ -15,21 +37,7 @@
     </app-hole>
   </div>
 
-  <form (ngSubmit)="addPlayer(playerName.value); playerName.value='';">
-    <input #playerName type="text" placeholder="Enter player name">
-    <button type="submit">Add Player</button>
-  </form>
 
-  <div *ngFor="let player of players; let i = index">
-    <p>{{ player.name }}'s Total Score: {{ getTotalScoreForPlayer(i) }}</p>
-  </div>
-  <div *ngIf="showHoleForm">
-    <form (ngSubmit)="addHole(+par.value, location.value, +latitude.value, +longitude.value)">
-      <input #par type="number" placeholder="Enter par" required>
-      <input #location type="text" placeholder="Enter location">
-      <input #latitude type="number" placeholder="Enter latitude">
-      <input #longitude type="number" placeholder="Enter longitude">
-      <button type="submit">Add Hole</button>
-    </form>
-  </div>  
+
+
 </div>
