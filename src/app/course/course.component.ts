@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HoleComponent } from '../hole/hole.component';
 import { CommonModule } from '@angular/common';
+import {}
 
 @Component({
   selector: 'app-course',
