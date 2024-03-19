@@ -54,18 +54,19 @@ export class CourseComponent {
       geolocation: latitude && longitude ? { lat: latitude, long: longitude } : undefined,
       playerScores: new Map<string, number>()
     };
-  
+
     this.players.forEach(player => {
       player.scores.push(0);
       newHole.playerScores.set(player.id, 0);
     });
-  
+
     this.holes.push(newHole);
+    this.selectedHoleIndex = this.holes.length - 1;
     this.toggleHoleForm();
   }
   logButtonClick() {
     console.log('Button clicked');
-  }  
+  }
 
   updatePlayerScore(playerIndex: number, score: number, holeIndex: number) {
     this.players[playerIndex].scores[holeIndex] = score;
@@ -94,4 +95,4 @@ export interface Player{
   name: string,
   scores: number[]
 }
-  
+
