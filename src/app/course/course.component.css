@@ -1,12 +1,13 @@
 .container {
     display: flex;
     align-items: flex-start; /* Align items at the start of the flex container */
-  }
+}
 
   .hole-list {
    display: flex;
    flex-direction: column;
    width: 30%;
+   justify-content: center;
   }
 
   .player-scores {
@@ -18,12 +19,21 @@
     width: 40%;
     flex: 1; /* Let the hole details take up available space */
   }
-  .add-icon img {
-    background-color: #abb596;
-    border-radius: 10px;
-    height: 20px;
-    width: 20px;
-  }
+
+.add-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.add-icon img {
+  background-color: #abb596;
+  border-radius: 10px;
+  height: 20px;
+  width: 20px;
+}
+
 .add-hole-form{
     display: flex;
     flex-direction: column;

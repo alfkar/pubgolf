@@ -5,19 +5,19 @@
       <a class="list-group-item list-group-item-action" (click)="selectHole(i)" *ngFor="let hole of holes; let i = index">
         Hole {{ i + 1 }}
       </a>
+      <a class="list-group-item list-group-item-action add-icon" (click)="toggleHoleForm()">
+        <img src="../../assets/add.png" alt="Add Hole">
+      <div *ngIf="showHoleForm">
+        <form class="add-hole-form" (ngSubmit)="addHole(+par.value, location.value, +latitude.value, +longitude.value)">
+          <input class="form-control" #par type="number" placeholder="Enter par" required>
+          <input class="form-control" #location type="text" placeholder="Enter location">
+          <input class="form-control" #latitude type="number" placeholder="Enter latitude">
+          <input class="form-control" #longitude type="number" placeholder="Enter longitude">
+          <button type="submit" class="btn btn-primary btn-sm">Add Hole</button>
+        </form>
+      </div>
+      </a>
     </ul>
-    <a class="add-icon" (click)="toggleHoleForm()">
-      <img src="../../assets/add.png" alt="Add Hole">
-    </a>
-    <div *ngIf="showHoleForm">
-      <form class="add-hole-form" (ngSubmit)="addHole(+par.value, location.value, +latitude.value, +longitude.value)">
-        <input #par type="number" placeholder="Enter par" required>
-        <input #location type="text" placeholder="Enter location">
-        <input #latitude type="number" placeholder="Enter latitude">
-        <input #longitude type="number" placeholder="Enter longitude">
-        <button type="submit">Add Hole</button>
-      </form>
-    </div>
   </div>
   <div class="player-scores"> Players
     <li *ngFor="let player of players; let i = index">
