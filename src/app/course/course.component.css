@@ -6,17 +6,17 @@
   .hole-list {
    display: flex;
    flex-direction: column;
-   width: 30%;
+   width: 20%;
    justify-content: center;
   }
 
   .player-scores {
-    width: 30%;
+    width: 20%;
     margin-right: 20px; /* Add some spacing between the hole list and player scores */
   }
 
   .hole-details {
-    width: 40%;
+    width: 60%;
     flex: 1; /* Let the hole details take up available space */
   }
 
@@ -39,5 +39,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
+}
+.add-hole-form button{
+  margin-top: 10px;
 }

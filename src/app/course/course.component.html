@@ -20,16 +20,20 @@
     </ul>
   </div>
   <div class="player-scores"> Players
-    <li *ngFor="let player of players; let i = index">
-      <p>{{ player.name }}'s Total Score: {{ getTotalScoreForPlayer(i) }}</p>
-    </li>
-    <a class="add-icon" (click)="toggleAddPlayerForm()">
-      <img src="../../assets/add.png" alt="Add Hole">
-    </a>
-    <form *ngIf="showAddPlayerForm" class="add-player-form" (ngSubmit)="addPlayer(playerName.value); playerName.value='';">
-      <input #playerName type="text" placeholder="Enter player name">
-      <button type="submit">Add Player</button>
-    </form>
+    <ul class="list-group">
+      <a class="list-group-item list-group-item-action"*ngFor="let player of players; let i = index">
+        {{ player.name }}'s Total Score: {{ getTotalScoreForPlayer(i) }}
+      </a>
+      <a class="list-group-item list-group-item-action add-icon" (click)="toggleAddPlayerForm()">
+        <img src="../../assets/add.png" alt="Add Hole">
+        <div *ngIf="showAddPlayerForm" (click)="$event.stopPropagation()">
+          <form class="add-hole-form" (ngSubmit)="addPlayer(playerName.value); playerName.value='';" >
+            <input class="form-control" #playerName type="text" placeholder="Enter player name">
+            <button type="submit" class="btn btn-primary btn-sm">Add Player</button>
+          </form>
+        </div>
+      </a>
+    </ul>
   </div>
 
   <div class="hole-details">
