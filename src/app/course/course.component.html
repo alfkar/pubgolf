@@ -7,7 +7,7 @@
       </a>
       <a class="list-group-item list-group-item-action add-icon" (click)="toggleHoleForm()">
         <img src="../../assets/add.png" alt="Add Hole">
-      <div *ngIf="showHoleForm">
+      <div *ngIf="showHoleForm" (click)="$event.stopPropagation()">
         <form class="add-hole-form" (ngSubmit)="addHole(+par.value, location.value, +latitude.value, +longitude.value)">
           <input class="form-control" #par type="number" placeholder="Enter par" required>
           <input class="form-control" #location type="text" placeholder="Enter location">
