@@ -1,12 +1,15 @@
-<!-- hole.component.html -->
-<div>
+<div class="hole-container">
   <h3>Hole {{ holeNumber }} - Par: {{ par }}</h3>
-  <div *ngFor="let player of players; let i = index">
-    <p>{{ player.name }}'s score:
+  <div *ngFor="let player of players; let i = index" class="player-score">
+    <div class="player-name">{{ player.name }}</div>
+    <div class="player-controls">
       <button (click)="decrementScore(i)">-</button>
       {{ getPlayerScore(i) }}
       <button (click)="incrementScore(i)">+</button>
-      ({{ getPlayerScore(i) - par > 0 ? '+' : ''}}{{ getPlayerScore(i) - par }})
-    </p>
+    </div>
+    <div class="score-comparison">
+      <span></span>{{ getPlayerScore(i) - par > 0 ? '+' : ''}}{{ getPlayerScore(i) - par }}<span></span>
+    </div>
   </div>
 </div>
+

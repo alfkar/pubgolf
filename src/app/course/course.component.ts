@@ -34,6 +34,8 @@ export class CourseComponent {
     this.userService.loggedInUser$.subscribe((loggedInUser: User | undefined) => {
       this.loggedInUser = loggedInUser;
     });
+    this.holes.push({holeNumber: this.holes.length + 1, par: 1, playerScores: new Map<string, number>()})
+    this.selectedHoleIndex = this.holes.length - 1;
   }
 
   addPlayer(playerName: string) {
@@ -46,7 +48,6 @@ export class CourseComponent {
     this.showAddPlayerForm = !this.showAddPlayerForm;
   }
   addHole(par: number, location?: string, latitude?: number, longitude?: number) {
-    console.log('holes', this.holes);
     const newHole: Hole = {
       holeNumber: this.holes.length + 1,
       par: par,
