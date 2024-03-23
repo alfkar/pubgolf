@@ -4,6 +4,18 @@
     <ul class="list-group">
       <a class="list-group-item list-group-item-action" (click)="selectHole(i)" *ngFor="let hole of holes; let i = index">
         Hole {{ i + 1 }}
+        <button type="submit" *ngIf="!hole.editHole"  class="btn btn-primary btn-sm" style="float: right;" (click)="toggleEditHoleForm(i)">Edit Hole</button>
+        <button type="submit" *ngIf="hole.editHole" class="stop-button btn btn-primary btn-sm" style="float: right;" (click)="toggleEditHoleForm(i)">Stop Edit</button>
+        <div *ngIf="hole.editHole" (click)="$event.stopPropagation()">
+          <form class="add-hole-form" (ngSubmit)="editHole(i ,+par.value, location.value, +latitude.value, +longitude.value)">
+            <input class="form-control form-addon" #par type="number" value="{{hole.par}}" required>
+            <input class="form-control form-addon" #location type="text" value="{{hole.location}}">
+            <input class="form-control form-addon" #latitude type="number" value="{{hole.geolocation?.lat}}">
+            <input class="form-control form-addon" #longitude type="number" value="{{hole.geolocation?.long}}">
+            <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
+          </form>
+        </div>
+
       </a>
       <a class="list-group-item list-group-item-action add-icon" (click)="toggleHoleForm()">
         <img src="../../assets/add.png" alt="Add Hole">

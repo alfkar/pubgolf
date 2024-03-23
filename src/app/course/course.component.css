@@ -34,6 +34,19 @@
   width: 20px;
 }
 
+.form-addon {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.stop-button {
+  background-color: red;
+  border-color: red;
+}
+.stop-button:hover {
+  background-color: #a30000
+}
+
 .add-hole-form{
     display: flex;
     flex-direction: column;
