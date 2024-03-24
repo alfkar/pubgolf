@@ -47,13 +47,17 @@ export class CourseComponent {
   toggleAddPlayerForm(){
     this.showAddPlayerForm = !this.showAddPlayerForm;
   }
+  toggleEditHoleForm(index: number) {
+    this.holes[index].editHole = !this.holes[index].editHole;
+  }
   addHole(par: number, location?: string, latitude?: number, longitude?: number) {
     const newHole: Hole = {
       holeNumber: this.holes.length + 1,
       par: par,
       location: location,
       geolocation: latitude && longitude ? { lat: latitude, long: longitude } : undefined,
-      playerScores: new Map<string, number>()
+      playerScores: new Map<string, number>(),
+      editHole: false,
     };
 
     this.players.forEach(player => {
@@ -64,6 +68,22 @@ export class CourseComponent {
     this.holes.push(newHole);
     this.selectedHoleIndex = this.holes.length - 1;
     this.toggleHoleForm();
+  }
+  editHole(index: number, 
+    par: number, 
+    location?: string, 
+    latitude?: number, 
+    longitude?: number) {
+    // Inefficient?
+    const updatedHole: Hole = {
+      holeNumber: this.holes.length + 1,
+      par: par,
+      location: location,
+      geolocation: latitude && longitude ? { lat: latitude, long: longitude } : undefined,
+      playerScores: this.holes[index].playerScores,
+      editHole: false,
+    };
+    this.holes[index] = updatedHole;
   }
   logButtonClick() {
     console.log('Button clicked');
@@ -90,6 +110,7 @@ export interface Hole {
     geolocation?: { lat: number, long: number };
     name?: string;
     playerScores: Map<string, number>;
+    editHole?: boolean;
 }
 export interface Player{
   id: string,
