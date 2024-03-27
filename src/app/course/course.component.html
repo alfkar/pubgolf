@@ -16,6 +16,10 @@
           </form>
         </div>
 
+        <div class="hole-details" *ngIf="isMobile && selectedHoleIndex === i">
+          <app-hole *ngIf="isMobile && selectedHoleIndex !== null" [par]="holes[selectedHoleIndex].par" [holeNumber]="holes[selectedHoleIndex].holeNumber" [players]="players" [holeIndex]="selectedHoleIndex">
+          </app-hole>
+        </div>
       </a>
       <a class="list-group-item list-group-item-action add-icon" (click)="toggleHoleForm()">
         <img src="../../assets/add.png" alt="Add Hole">
@@ -48,7 +52,7 @@
     </ul>
   </div>
   <div class="hole-details">
-    <app-hole *ngIf="selectedHoleIndex !== null" [par]="holes[selectedHoleIndex].par" [holeNumber]="holes[selectedHoleIndex].holeNumber" [players]="players" [holeIndex]="selectedHoleIndex">
+    <app-hole *ngIf="!isMobile && selectedHoleIndex !== null" [par]="holes[selectedHoleIndex].par" [holeNumber]="holes[selectedHoleIndex].holeNumber" [players]="players" [holeIndex]="selectedHoleIndex">
     </app-hole>
   </div>
 </div>

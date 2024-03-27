@@ -20,6 +20,33 @@
     width: 60%;
     flex: 1; /* Let the hole details take up available space */
   }
+@media only screen and (max-width: 812px) {
+  .container {
+    display: grid;
+    align-items: center;
+  }
+  .hole-list {
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     justify-content: center;
+     margin-bottom: 10px;
+     margin-top: 10px;
+  }
+  .player-scores {
+    text-align: center;
+    width: 100%;
+    margin-right: 20px; /* Add some spacing between the hole list and player scores */
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  .hole-details {
+    margin-top: 10px;
+    width: 100%;
+    flex: 1; /* Let the hole details take up available space */
+  }
+}
 
 .add-icon {
   display: flex;

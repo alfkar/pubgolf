@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { HoleComponent } from '../hole/hole.component';
 import { CommonModule } from '@angular/common';
 import { User, UserService } from '../user.service';
@@ -22,6 +22,7 @@ export class CourseComponent {
   showAddPlayerForm: boolean = false;
   players: Player[] = [];
   selectedHoleIndex: number | null = null;
+  isMobile: boolean = false;
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -36,6 +37,8 @@ export class CourseComponent {
     });
     this.holes.push({holeNumber: this.holes.length + 1, par: 1, playerScores: new Map<string, number>()})
     this.selectedHoleIndex = this.holes.length - 1;
+    this.checkScreenSize();
+    console.log("Checking screen size init")
   }
 
   addPlayer(playerName: string) {
@@ -69,14 +72,14 @@ export class CourseComponent {
     this.selectedHoleIndex = this.holes.length - 1;
     this.toggleHoleForm();
   }
-  editHole(index: number, 
-    par: number, 
-    location?: string, 
-    latitude?: number, 
+  editHole(index: number,
+    par: number,
+    location?: string,
+    latitude?: number,
     longitude?: number) {
     // Inefficient?
     const updatedHole: Hole = {
-      holeNumber: this.holes.length + 1,
+      holeNumber: index + 1,
       par: par,
       location: location,
       geolocation: latitude && longitude ? { lat: latitude, long: longitude } : undefined,
@@ -99,6 +102,16 @@ export class CourseComponent {
 
   selectHole(holeIndex: number) {
     this.selectedHoleIndex = holeIndex;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+      this.checkScreenSize();
+      console.log("Checking screen size resize")
+  }
+
+  checkScreenSize() {
+      this.isMobile = window.innerWidth < 815; // Adjust the breakpoint as needed
   }
 }
 
